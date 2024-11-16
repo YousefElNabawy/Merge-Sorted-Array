@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+void merge(int* nums1, int m, int* nums2, int n) {
+    int p1 = m - 1;       // Pointer for the end of the initialized part of nums1
+    int p2 = n - 1;       // Pointer for the end of nums2
+    int p = m + n - 1;    // Pointer for the end of nums1 (target position)
+
+    // Merge in reverse order
+    while (p1 >= 0 && p2 >= 0) {
+        if (nums1[p1] > nums2[p2]) {
+            nums1[p] = nums1[p1];
+            p1--;
+        } else {
+            nums1[p] = nums2[p2];
+            p2--;
+        }
+        p--;
+    }
+
+    // If there are remaining elements in nums2, copy them
+    while (p2 >= 0) {
+        nums1[p] = nums2[p2];
+        p2--;
+        p--;
+    }
+}
+
+// Helper function to print the array
+void printArray(int* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int nums1[6] = {1, 2, 3, 0, 0, 0};
+    int nums2[3] = {2, 5, 6};
+    int m = 3;
+    int n = 3;
+
+    merge(nums1, m, nums2, n);
+    printArray(nums1, m + n);
+
+    return 0;
+}
