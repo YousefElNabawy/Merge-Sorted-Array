@@ -1,3 +1,10 @@
+Explanation:
+The code starts merging from the end of both arrays to prevent overwriting elements in nums1.
+By the end, nums1 contains the merged array in non-decreasing order.
+
+
+
+
 #include <stdio.h>
 
 void merge(int* nums1, int m, int* nums2, int n) {
